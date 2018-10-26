@@ -1,0 +1,9 @@
+<style lang="less">
+${ci}@import './${initialLowercaseEntityName}-detail.less';
+</style>
+
+<template>
+${ci}<div>
+${ci}${ci}<Card>
+${ci}${ci}${ci}<Button class="margin-bottom-12" @click="gotoList()">返回</Button>
+${ci}${ci}${ci}<Row>

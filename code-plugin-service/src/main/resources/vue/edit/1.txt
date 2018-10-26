@@ -1,0 +1,9 @@
+<style lang="less">
+${ci}@import './${initialLowercaseEntityName}-edit.less';
+</style>
+
+<template>
+${ci}<div>
+${ci}${ci}<Card>
+${ci}${ci}${ci}<Form ref="${initialLowercaseEntityName}Form" :model="${initialLowercaseEntityName}" :rules="${initialLowercaseEntityName}FormValidate" :label-width="120" class="margin-top-20">
+${ci}${ci}${ci}${ci}<Row type="flex" justify="center">

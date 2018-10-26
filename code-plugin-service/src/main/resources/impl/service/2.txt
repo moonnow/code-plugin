@@ -1,0 +1,4 @@
+import ${entityPackageName}.${initialCaseEntityName};
+import ${iPersistentPackageName}.I${initialCaseEntityName}Persistent;
+import ${queryEntityPackageName}.${initialCaseEntityName}Query;
+import ${VOPackageName}.${initialCaseEntityName}VO;

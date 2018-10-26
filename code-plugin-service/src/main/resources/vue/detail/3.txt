@@ -1,0 +1,50 @@
+${ci}${ci}${ci}</Row>
+${ci}${ci}</Card>
+${ci}</div>
+</template>
+
+<script>
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import ${initialCaseEntityName} from '@/view/com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}'
+
+export default {
+${ci}name: '${initialCaseEntityName}Detail',
+${ci}props: {
+${ci}},
+${ci}data () {
+${ci}${ci}return {
+${ci}${ci}${ci}${initialLowercaseEntityName}: new ${initialCaseEntityName}()
+${ci}${ci}}
+${ci}},
+${ci}computed: {
+${ci}${ci}...mapState('${initialLowercaseEntityName}Store', [
+${ci}${ci}]),
+${ci}${ci}...mapGetters('${initialLowercaseEntityName}Store', [
+${ci}${ci}])
+${ci}},
+${ci}methods: {
+${ci}${ci}...mapMutations('${initialLowercaseEntityName}Store', [
+${ci}${ci}]),
+${ci}${ci}...mapActions('${initialLowercaseEntityName}Store', [
+${ci}${ci}${ci}'get${initialCaseEntityName}ByPk'
+${ci}${ci}]),
+${ci}${ci}gotoList () {
+${ci}${ci}${ci}this.$router.push({ name: '${initialLowercaseEntityName}-list' })
+${ci}${ci}}
+${ci}},
+${ci}created () {
+${ci}${ci}this.${initialLowercaseEntityName}.${primaryKeyInitialLowercaseColumnName} = this.$route.params.${primaryKeyInitialLowercaseColumnName}
+${ci}${ci}if (this.${initialLowercaseEntityName}.${primaryKeyInitialLowercaseColumnName} !== 'add') {
+${ci}${ci}${ci}this.get${initialCaseEntityName}ByPk(this.${initialLowercaseEntityName}.${primaryKeyInitialLowercaseColumnName}).then(res => {
+${ci}${ci}${ci}${ci}if (res.data.isSuccess && res.data.statusCode === 200) {
+${ci}${ci}${ci}${ci}${ci}Object.assign(this.${initialLowercaseEntityName}, res.data.data[0])
+${ci}${ci}${ci}${ci}} else {
+${ci}${ci}${ci}${ci}${ci}this.$Message.error({ content: res.data.msg, duration: 6 })
+${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}}).catch(result => {
+${ci}${ci}${ci}${ci}this.$Message.error({ content: '请求失败！状态码 ' + result.response.status + ' ' + result.response.statusText, duration: 6 })
+${ci}${ci}${ci}})
+${ci}${ci}}
+${ci}}
+}
+</script>

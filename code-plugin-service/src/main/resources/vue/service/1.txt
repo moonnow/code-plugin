@@ -1,0 +1,106 @@
+import axios from 'axios'
+import ToolService from '@/api/com/pro/tool/toolService'
+import Parameter from '@/api/com/pro/tool/Parameter'
+
+const toolService = new ToolService()
+
+const url = '/${controllerUrl}${initialLowercaseEntityName}'
+
+const vourl = '/${controllerUrl}${initialLowercaseEntityName}/vo'
+
+export default {
+${ci}save: (${initialLowercaseEntityName}) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.save
+${ci}${ci}return axios.post(url + toolService.getUrl(parameter), ${initialLowercaseEntityName}, toolService.getConfig())
+${ci}},
+${ci}batchSave: (${initialLowercaseEntityName}OrList) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.batchSave
+${ci}${ci}if (${initialLowercaseEntityName}OrList instanceof Array) {
+${ci}${ci}${ci}return axios.post(url + toolService.getUrl(parameter), ${initialLowercaseEntityName}OrList, toolService.getConfig())
+${ci}${ci}} else {
+${ci}${ci}${ci}return axios.post(url + toolService.getUrl(parameter), new Array(${initialLowercaseEntityName}OrList), toolService.getConfig())
+${ci}${ci}}
+${ci}},
+${ci}update: (${initialLowercaseEntityName}) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.update
+${ci}${ci}return axios.put(url + toolService.getUrl(parameter), ${initialLowercaseEntityName}, toolService.getConfig())
+${ci}},
+${ci}batchUpdate: (${initialLowercaseEntityName}OrList) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.batchUpdate
+${ci}${ci}if (${initialLowercaseEntityName}OrList instanceof Array) {
+${ci}${ci}${ci}return axios.put(url + toolService.getUrl(parameter), ${initialLowercaseEntityName}OrList, toolService.getConfig())
+${ci}${ci}} else {
+${ci}${ci}${ci}return axios.put(url + toolService.getUrl(parameter), new Array(${initialLowercaseEntityName}OrList), toolService.getConfig())
+${ci}${ci}}
+${ci}},
+${ci}remove: (${initialLowercaseEntityName}) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.remove
+${ci}${ci}return axios.delete(url + toolService.getUrl(parameter), toolService.getConfig(${initialLowercaseEntityName}))
+${ci}},
+${ci}batchRemove: (${initialLowercaseEntityName}OrList) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.batchRemove
+${ci}${ci}if (${initialLowercaseEntityName}OrList instanceof Array) {
+${ci}${ci}${ci}return axios.delete(url + toolService.getUrl(parameter), toolService.getConfig(${initialLowercaseEntityName}OrList))
+${ci}${ci}} else {
+${ci}${ci}${ci}return axios.delete(url + toolService.getUrl(parameter), toolService.getConfig(new Array(${initialLowercaseEntityName}OrList)))
+${ci}${ci}}
+${ci}},
+${ci}getByPk: (primaryKey) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.getByPk
+${ci}${ci}parameter.primaryKey = primaryKey
+${ci}${ci}return axios.get(url + toolService.getUrl(parameter), toolService.getConfig())
+${ci}},
+${ci}getAll: () => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.getAll
+${ci}${ci}return axios.post(url + toolService.getUrl(parameter), toolService.getConfig())
+${ci}},
+${ci}paging: (rows, page) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.paging
+${ci}${ci}return axios.post(url + toolService.getPagingUrl(parameter, rows, page), toolService.getConfig())
+${ci}},
+${ci}query: (${initialLowercaseEntityName}Query) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.getAll
+${ci}${ci}return axios.post(url + toolService.getUrl(parameter), ${initialLowercaseEntityName}Query, toolService.getConfig())
+${ci}},
+${ci}pagingQuery: (${initialLowercaseEntityName}Query, rows, page) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.paging
+${ci}${ci}return axios.post(url + toolService.getPagingUrl(parameter, rows, page), ${initialLowercaseEntityName}Query, toolService.getConfig())
+${ci}},
+${ci}getVOByPk: (primaryKey) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.getVOByPk
+${ci}${ci}parameter.primaryKey = primaryKey
+${ci}${ci}return axios.get(url + toolService.getUrl(parameter), toolService.getConfig())
+${ci}},
+${ci}getAllVO: () => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.getAllVO
+${ci}${ci}return axios.post(vourl + toolService.getUrl(parameter), toolService.getConfig())
+${ci}},
+${ci}pagingVO: (rows, page) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.pagingVO
+${ci}${ci}return axios.post(vourl + toolService.getPagingUrl(parameter, rows, page), toolService.getConfig())
+${ci}},
+${ci}queryVO: (${initialLowercaseEntityName}Query) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.getAllVO
+${ci}${ci}return axios.post(vourl + toolService.getUrl(parameter), ${initialLowercaseEntityName}Query, toolService.getConfig())
+${ci}},
+${ci}pagingQueryVO: (${initialLowercaseEntityName}Query, rows, page) => {
+${ci}${ci}let parameter = new Parameter()
+${ci}${ci}parameter.action = toolService.pagingVO
+${ci}${ci}return axios.post(vourl + toolService.getPagingUrl(parameter, rows, page), ${initialLowercaseEntityName}Query, toolService.getConfig())
+${ci}}
+}

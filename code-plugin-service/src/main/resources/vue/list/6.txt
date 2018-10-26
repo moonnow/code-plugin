@@ -1,0 +1,134 @@
+${ci}${ci}${ci}],
+${ci}${ci}${ci}dataSet: [],
+${ci}${ci}${ci}selectDataRow: [],
+${ci}${ci}${ci}selectDataRowLength: 0,
+${ci}${ci}${ci}spinShow: false,
+${ci}${ci}${ci}count: 0,
+${ci}${ci}${ci}rows: 10,
+${ci}${ci}${ci}page: 1,
+${ci}${ci}${ci}pageShow: true,
+${ci}${ci}${ci}keywordSearchClickRate: 0,
+${ci}${ci}${ci}keywordSearchSubmitting: false,
+${ci}${ci}${ci}vagueQuerySubmitting: false,
+${ci}${ci}${ci}${initialLowercaseEntityName}VagueQuery: new ${initialCaseEntityName}Query()
+${ci}${ci}}
+${ci}},
+${ci}computed: {
+${ci}${ci}...mapState('${initialLowercaseEntityName}Store', [
+${ci}${ci}]),
+${ci}${ci}...mapGetters('${initialLowercaseEntityName}Store', [
+${ci}${ci}])
+${ci}},
+${ci}methods: {
+${ci}${ci}...mapMutations([
+${ci}${ci}${ci}'addTag'
+${ci}${ci}]),
+${ci}${ci}...mapMutations('${initialLowercaseEntityName}Store', [
+${ci}${ci}]),
+${ci}${ci}...mapActions('${initialLowercaseEntityName}Store', [
+${ci}${ci}${ci}'batchRemove${initialCaseEntityName}',
+${ci}${ci}${ci}'pagingGet${initialCaseEntityName}',
+${ci}${ci}${ci}'query${initialCaseEntityName}'
+${ci}${ci}]),
+${ci}${ci}add () {
+${ci}${ci}${ci}const route = {
+${ci}${ci}${ci}${ci}name: '${initialLowercaseEntityName}-edit',
+${ci}${ci}${ci}${ci}params: {
+${ci}${ci}${ci}${ci}${ci}${primaryKeyInitialLowercaseColumnName}: 'add'
+${ci}${ci}${ci}${ci}},
+${ci}${ci}${ci}${ci}meta: {
+${ci}${ci}${ci}${ci}${ci}icon: 'md-trending-up',
+${ci}${ci}${ci}${ci}${ci}title: '编辑${dtNameAnnotation}'
+${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}}
+${ci}${ci}${ci}this.addTag({
+${ci}${ci}${ci}${ci}route: route,
+${ci}${ci}${ci}${ci}type: 'push'
+${ci}${ci}${ci}})
+${ci}${ci}${ci}this.$router.push(route)
+${ci}${ci}},
+${ci}${ci}up () {
+${ci}${ci}${ci}const route = {
+${ci}${ci}${ci}${ci}name: '${initialLowercaseEntityName}-edit',
+${ci}${ci}${ci}${ci}params: {
+${ci}${ci}${ci}${ci}${ci}${primaryKeyInitialLowercaseColumnName}: this.selectDataRow[0].${primaryKeyInitialLowercaseColumnName}
+${ci}${ci}${ci}${ci}},
+${ci}${ci}${ci}${ci}meta: {
+${ci}${ci}${ci}${ci}${ci}title: '编辑${dtNameAnnotation}'
+${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}}
+${ci}${ci}${ci}this.addTag({
+${ci}${ci}${ci}${ci}route: route,
+${ci}${ci}${ci}${ci}type: 'push'
+${ci}${ci}${ci}})
+${ci}${ci}${ci}this.$router.push(route)
+${ci}${ci}},
+${ci}${ci}detail () {
+${ci}${ci}${ci}const route = {
+${ci}${ci}${ci}${ci}name: '${initialLowercaseEntityName}-detail',
+${ci}${ci}${ci}${ci}params: {
+${ci}${ci}${ci}${ci}${ci}${primaryKeyInitialLowercaseColumnName}: this.selectDataRow[0].${primaryKeyInitialLowercaseColumnName}
+${ci}${ci}${ci}${ci}},
+${ci}${ci}${ci}${ci}meta: {
+${ci}${ci}${ci}${ci}${ci}title: '${dtNameAnnotation}详情'
+${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}}
+${ci}${ci}${ci}this.addTag({
+${ci}${ci}${ci}${ci}route: route,
+${ci}${ci}${ci}${ci}type: 'push'
+${ci}${ci}${ci}})
+${ci}${ci}${ci}this.$router.push(route)
+${ci}${ci}},
+${ci}${ci}setSelectDataRow (list) {
+${ci}${ci}${ci}this.selectDataRow = list
+${ci}${ci}${ci}this.selectDataRowLength = list.length
+${ci}${ci}},
+${ci}${ci}getDataSet () {
+${ci}${ci}${ci}this.spinShow = true
+${ci}${ci}${ci}this.pageShow = true
+${ci}${ci}${ci}this.pagingGet${initialCaseEntityName}({ rows: this.rows, page: this.page }).then(res => {
+${ci}${ci}${ci}${ci}if (res.data.isSuccess && res.data.statusCode === 200) {
+${ci}${ci}${ci}${ci}${ci}this.dataSet = res.data.data
+${ci}${ci}${ci}${ci}${ci}this.count = res.data.count
+${ci}${ci}${ci}${ci}${ci}this.setSelectDataRow([])
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}} else {
+${ci}${ci}${ci}${ci}${ci}this.$Message.error({ content: res.data.msg, duration: 6 })
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}}).catch(result => {
+${ci}${ci}${ci}${ci}this.$Message.error({ content: '请求失败！状态码 ' + result.response.status + ' ' + result.response.statusText, duration: 6 })
+${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}})
+${ci}${ci}},
+${ci}${ci}del () {
+${ci}${ci}${ci}this.spinShow = true
+${ci}${ci}${ci}this.batchRemove${initialCaseEntityName}(this.selectDataRow).then(res => {
+${ci}${ci}${ci}${ci}if (res.data.isSuccess && res.data.statusCode === 200) {
+${ci}${ci}${ci}${ci}${ci}this.$Message.success({ content: '${dtNameAnnotation}信息删除成功.', duration: 3 })
+${ci}${ci}${ci}${ci}${ci}this.setSelectDataRow([])
+${ci}${ci}${ci}${ci}${ci}this.getDataSet()
+${ci}${ci}${ci}${ci}} else {
+${ci}${ci}${ci}${ci}${ci}this.$Message.error({ content: res.data.msg, duration: 6 })
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}}).catch(result => {
+${ci}${ci}${ci}${ci}this.$Message.error({ content: '请求失败！状态码 ' + result.response.status + ' ' + result.response.statusText, duration: 6 })
+${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}})
+${ci}${ci}},
+${ci}${ci}pageIndexChange (pageIndex) {
+${ci}${ci}${ci}this.page = pageIndex
+${ci}${ci}${ci}this.getDataSet()
+${ci}${ci}},
+${ci}${ci}pageSizeChange (pageSize) {
+${ci}${ci}${ci}this.rows = pageSize
+${ci}${ci}${ci}this.page = 1
+${ci}${ci}${ci}this.getDataSet()
+${ci}${ci}},
+${ci}${ci}keywordSearch (keyLikeValue) {
+${ci}${ci}${ci}if (keyLikeValue !== '') {
+${ci}${ci}${ci}${ci}this.keywordSearchSubmitting = true
+${ci}${ci}${ci}${ci}this.pageShow = false
+${ci}${ci}${ci}${ci}this.spinShow = true
+${ci}${ci}${ci}${ci}let ${initialLowercaseEntityName}QueryKeyLikeValue = new ${initialCaseEntityName}Query()

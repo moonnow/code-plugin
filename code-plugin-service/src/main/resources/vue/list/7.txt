@@ -1,0 +1,1 @@
+${ci}${ci}${ci}${ci}${initialLowercaseEntityName}QueryKeyLikeValue.${initialLowercaseColumnName} = '%' + keyLikeValue + '%'

@@ -1,0 +1,3 @@
+${ci}${ci}${ci}${ci}${ci}${ci}${ci}<FormItem label="${columnNameAnnotation}：">
+${ci}${ci}${ci}${ci}${ci}${ci}${ci}${ci}<InputNumber v-model="${initialLowercaseEntityName}VagueQuery.${initialLowercaseColumnName}"></InputNumber>
+${ci}${ci}${ci}${ci}${ci}${ci}${ci}</FormItem>

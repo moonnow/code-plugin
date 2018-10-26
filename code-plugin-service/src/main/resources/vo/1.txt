@@ -1,0 +1,8 @@
+package ${VOPackageName};
+
+/**
+ * [${dtNameAnnotation}]VO类, 表名[${dtName}].
+ */
+public class ${initialCaseEntityName}VO implements java.io.Serializable {
+
+${ci}private static final long serialVersionUID = 1L;

@@ -1,0 +1,53 @@
+${ci}${ci}${ci}${ci}this.query${initialCaseEntityName}(${initialLowercaseEntityName}QueryKeyLikeValue).then(res => {
+${ci}${ci}${ci}${ci}${ci}if (res.data.isSuccess && res.data.statusCode === 200) {
+${ci}${ci}${ci}${ci}${ci}${ci}this.dataSet = res.data.data
+${ci}${ci}${ci}${ci}${ci}${ci}this.count = res.data.count
+${ci}${ci}${ci}${ci}${ci}${ci}this.setSelectDataRow([])
+${ci}${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.keywordSearchSubmitting = false }, 5000)
+${ci}${ci}${ci}${ci}${ci}} else {
+${ci}${ci}${ci}${ci}${ci}${ci}this.$Message.error({ content: res.data.msg, duration: 6 })
+${ci}${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.keywordSearchSubmitting = false }, 5000)
+${ci}${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}${ci}}).catch(result => {
+${ci}${ci}${ci}${ci}${ci}this.$Message.error({ content: '请求失败！状态码 ' + result.response.status + ' ' + result.response.statusText, duration: 6 })
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.keywordSearchSubmitting = false }, 5000)
+${ci}${ci}${ci}${ci}})
+${ci}${ci}${ci}} else {
+${ci}${ci}${ci}${ci}this.keywordSearchClickRate++
+${ci}${ci}${ci}${ci}if (this.keywordSearchClickRate > 10) {
+${ci}${ci}${ci}${ci}${ci}this.$Message.warning({ content: '兄dei，你是闲的吗？', duration: 6 })
+${ci}${ci}${ci}${ci}${ci}this.keywordSearchClickRate = 0
+${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}}
+${ci}${ci}},
+${ci}${ci}vagueQuery () {
+${ci}${ci}${ci}this.vagueQuerySubmitting = true
+${ci}${ci}${ci}this.pageShow = false
+${ci}${ci}${ci}this.spinShow = true
+${ci}${ci}${ci}this.query${initialCaseEntityName}(this.${initialLowercaseEntityName}VagueQuery).then(res => {
+${ci}${ci}${ci}${ci}if (res.data.isSuccess && res.data.statusCode === 200) {
+${ci}${ci}${ci}${ci}${ci}this.dataSet = res.data.data
+${ci}${ci}${ci}${ci}${ci}this.count = res.data.count
+${ci}${ci}${ci}${ci}${ci}this.setSelectDataRow([])
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.vagueQuerySubmitting = false }, 5000)
+${ci}${ci}${ci}${ci}} else {
+${ci}${ci}${ci}${ci}${ci}this.$Message.error({ content: res.data.msg, duration: 6 })
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}${ci}setTimeout(() => { this.vagueQuerySubmitting = false }, 5000)
+${ci}${ci}${ci}${ci}}
+${ci}${ci}${ci}}).catch(result => {
+${ci}${ci}${ci}${ci}this.$Message.error({ content: '请求失败！状态码 ' + result.response.status + ' ' + result.response.statusText, duration: 6 })
+${ci}${ci}${ci}${ci}setTimeout(() => { this.spinShow = false }, 700)
+${ci}${ci}${ci}${ci}setTimeout(() => { this.vagueQuerySubmitting = false }, 5000)
+${ci}${ci}${ci}})
+${ci}${ci}}
+${ci}},
+${ci}mounted () {
+${ci}${ci}this.getDataSet()
+${ci}}
+}
+</script>

@@ -1,0 +1,3 @@
+import ${entityPackageName}.${initialCaseEntityName};
+import ${queryEntityPackageName}.${initialCaseEntityName}Query;
+import ${VOPackageName}.${initialCaseEntityName}VO;

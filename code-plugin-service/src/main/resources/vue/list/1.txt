@@ -1,0 +1,17 @@
+<style lang="less">
+${ci}@import './${initialLowercaseEntityName}-list.less';
+</style>
+
+<template>
+${ci}<div>
+${ci}${ci}<Card>
+${ci}${ci}${ci}<Row>
+${ci}${ci}${ci}${ci}<Col :xs="12" :sm="10" :md="6" :lg="4">
+${ci}${ci}${ci}${ci}${ci}<Input search enter-button placeholder="关键字搜索" :disabled="keywordSearchSubmitting" @on-search="keywordSearch($event)" />
+${ci}${ci}${ci}${ci}</Col>
+${ci}${ci}${ci}</Row>
+${ci}${ci}${ci}<Collapse simple class="margin-top-10">
+${ci}${ci}${ci}${ci}<Panel>
+${ci}${ci}${ci}${ci}${ci}精准查询
+${ci}${ci}${ci}${ci}${ci}<div slot="content">
+${ci}${ci}${ci}${ci}${ci}${ci}<Form ref="${initialLowercaseEntityName}VagueQueryForm" :model="${initialLowercaseEntityName}VagueQuery" inline :label-width="135" class="margin-top-10">

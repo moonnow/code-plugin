@@ -1,0 +1,32 @@
+${ci}${ci}${ci}${ci}${ci}${ci}${ci}<Button type="primary" @click="vagueQuery()" :loading="vagueQuerySubmitting">精准查询</Button>
+${ci}${ci}${ci}${ci}${ci}${ci}</Form>
+${ci}${ci}${ci}${ci}${ci}</div>
+${ci}${ci}${ci}${ci}</Panel>
+${ci}${ci}${ci}</Collapse>
+${ci}${ci}${ci}<Button class="pro-list-button" type="primary" ghost icon="ios-add-circle-outline" @click="add()">新建</Button>
+${ci}${ci}${ci}<Button class="pro-list-button" type="dashed" icon="ios-brush-outline" @click="up()" v-if="selectDataRowLength === 1">编辑</Button>
+${ci}${ci}${ci}<Poptip confirm title="确认删除？" placement="bottom" @on-ok="del()">
+${ci}${ci}${ci}${ci}<Button class="pro-list-button" type="error" ghost icon="ios-backspace-outline" v-if="selectDataRowLength > 0">删除</Button>
+${ci}${ci}${ci}</Poptip>
+${ci}${ci}${ci}<Button class="pro-list-button" icon="md-bulb" @click="detail()" v-if="selectDataRowLength === 1">详情</Button>
+${ci}${ci}${ci}<Table :columns="columns" :data="dataSet" @on-selection-change="setSelectDataRow($event)"></Table>
+${ci}${ci}${ci}<Row type="flex" justify="center" class="margin-top-10" v-if="pageShow">
+${ci}${ci}${ci}${ci}<Page :total="count" show-total show-sizer show-elevator :page-size-opts="[10, 30, 50]" @on-change="pageIndexChange($event)" @on-page-size-change="pageSizeChange($event)" />
+${ci}${ci}${ci}</Row>
+${ci}${ci}${ci}<Spin size="large" fix v-if="spinShow"></Spin>
+${ci}${ci}</Card>
+${ci}</div>
+</template>
+
+<script>
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import ${initialCaseEntityName}Query from '@/view/com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}Query'
+
+export default {
+${ci}name: '${initialCaseEntityName}List',
+${ci}props: {
+${ci}},
+${ci}data () {
+${ci}${ci}return {
+${ci}${ci}${ci}columns: [
+${ci}${ci}${ci}${ci}{ type: 'selection', width: 50, align: 'center', fixed: 'left' },

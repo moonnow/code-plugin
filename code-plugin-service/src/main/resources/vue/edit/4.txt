@@ -1,0 +1,26 @@
+${ci}${ci}${ci}${ci}${ci}<Col :xs="24" :sm="20" :md="18" :lg="14">
+${ci}${ci}${ci}${ci}${ci}${ci}<FormItem>
+${ci}${ci}${ci}${ci}${ci}${ci}${ci}<Button class="margin-right-8" @click="gotoList()">取消</Button>
+${ci}${ci}${ci}${ci}${ci}${ci}${ci}<Button class="margin-right-8" @click="reset()">重置</Button>
+${ci}${ci}${ci}${ci}${ci}${ci}${ci}<Button class="margin-right-8" type="primary" @click="saveAdd()" :loading="submitting">保存并继续录入</Button>
+${ci}${ci}${ci}${ci}${ci}${ci}${ci}<Button class="margin-right-8" type="primary" @click="save()" :loading="submitting">保存</Button>
+${ci}${ci}${ci}${ci}${ci}${ci}</FormItem>
+${ci}${ci}${ci}${ci}${ci}</Col>
+${ci}${ci}${ci}${ci}</Row>
+${ci}${ci}${ci}</Form>
+${ci}${ci}</Card>
+${ci}</div>
+</template>
+
+<script>
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import ${initialCaseEntityName} from '@/view/com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}'
+
+export default {
+${ci}name: '${initialCaseEntityName}Edit',
+${ci}props: {
+${ci}},
+${ci}data () {
+${ci}${ci}return {
+${ci}${ci}${ci}${initialLowercaseEntityName}: new ${initialCaseEntityName}(),
+${ci}${ci}${ci}${initialLowercaseEntityName}FormValidate: {
