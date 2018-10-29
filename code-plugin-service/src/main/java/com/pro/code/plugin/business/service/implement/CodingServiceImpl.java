@@ -331,6 +331,7 @@ public class CodingServiceImpl implements ICodingService {
       config.setVueEditCssFilePath(ConfigTools.getVueEditCssFilePathStrFromConfig(dt.getProPath(), dt.getProAllName(), dt.getInitialLowercaseEntityName()));
       config.setVueDetailFilePath(ConfigTools.getVueDetailFilePathStrFromConfig(dt.getProPath(), dt.getProAllName(), dt.getInitialLowercaseEntityName()));
       config.setVueDetailCssFilePath(ConfigTools.getVueDetailCssFilePathStrFromConfig(dt.getProPath(), dt.getProAllName(), dt.getInitialLowercaseEntityName()));
+      config.setJpaPersistentInterfaceFilePath(ConfigTools.getIJpaPersistentFilePathStrFromConfig(dt.getProPath(), dt.getProAllName(), dt.getInitialCaseEntityName()));
       return config;
     } catch (CodePluginException e) {
       if (log.isErrorEnabled()) {
@@ -472,6 +473,39 @@ public class CodingServiceImpl implements ICodingService {
       }
       iPersistentStr.append(StrTools.renderString(StrTools.getStrFromFileResourcesPath("/i/persistent/1.txt"), configMap));
       StrTools.getFileFromContentStrAndPath(iPersistentStr.toString(), config.getPersistentInterfaceFilePath());
+    } catch (CodePluginException e) {
+      if (log.isErrorEnabled()) {
+        log.error(e);
+      }
+      throw e;
+    } catch (Exception e) {
+      if (log.isErrorEnabled()) {
+        log.error(e.getMessage(), e);
+      }
+      throw CodePluginException.getException(e, CodePluginException.FW_ERROR, e.getMessage());
+    }
+  }
+
+  @Override
+  public void codingIJpaPersistent(java.lang.String dtId, Config config) throws CodePluginException {
+    if (log.isDebugEnabled()) {
+      log.debug("Staring call CodingService.codingIJpaPersistent ");
+      log.debug("parameter dtId is : " + dtId);
+      log.debug("parameter config is : " + config);
+    }
+    try {
+      if (ToolUtil.isNullStr(dtId)) {
+        throw CodePluginException.getException(CodePluginException.FW_PARAMETER_IS_NULL_ERROR, " dtId ");
+      }
+      StringBuilder iJpaPersistentStr = new StringBuilder();
+      LinkedHashMap<String, String> configMap = new LinkedHashMap<String, String>();
+      Dt dt = dtPersistent.getDtByPk(dtId);
+      configMap.putAll(ConfigTools.configMap);
+      configMap.put("iPersistentPackageName", ConfigTools.getIPersistentPackageNameStrFromConfig(dt.getProAllName()));
+      configMap.put("entityPackageName", ConfigTools.getEntityPackageNameStrFromConfig(dt.getProAllName()));
+      configMap.put("initialCaseEntityName", dt.getInitialCaseEntityName());
+      iJpaPersistentStr.append(StrTools.renderString(StrTools.getStrFromFileResourcesPath("/i/persistent/jpa/1.txt"), configMap));
+      StrTools.getFileFromContentStrAndPath(iJpaPersistentStr.toString(), config.getJpaPersistentInterfaceFilePath());
     } catch (CodePluginException e) {
       if (log.isErrorEnabled()) {
         log.error(e);

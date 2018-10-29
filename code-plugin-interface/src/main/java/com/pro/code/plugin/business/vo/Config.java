@@ -76,6 +76,8 @@ public class Config implements java.io.Serializable {
 
   protected java.lang.String vueDetailCssFilePath;
 
+  protected java.lang.String jpaPersistentInterfaceFilePath;
+
   public java.lang.String getJdbcEntityFilePath() {
     return jdbcEntityFilePath;
   }
@@ -362,6 +364,14 @@ public class Config implements java.io.Serializable {
 
   public void setVueDetailCssFilePath(java.lang.String vueDetailCssFilePath) {
     this.vueDetailCssFilePath = vueDetailCssFilePath;
+  }
+
+  public java.lang.String getJpaPersistentInterfaceFilePath() {
+    return jpaPersistentInterfaceFilePath;
+  }
+
+  public void setJpaPersistentInterfaceFilePath(java.lang.String jpaPersistentInterfaceFilePath) {
+    this.jpaPersistentInterfaceFilePath = jpaPersistentInterfaceFilePath;
   }
 
   @Override

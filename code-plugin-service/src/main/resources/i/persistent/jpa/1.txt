@@ -1,0 +1,9 @@
+package ${iPersistentPackageName};
+
+import org.springframework.data.repository.CrudRepository;
+
+import ${entityPackageName}.${initialCaseEntityName};
+
+public interface I${initialCaseEntityName}JpaPersistent extends CrudRepository<${initialCaseEntityName}, Long> {
+
+}

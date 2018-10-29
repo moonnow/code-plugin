@@ -15,6 +15,8 @@ public interface ICodingService {
 
   public void codingIPersistent(java.lang.String dtId, Config config) throws CodePluginException;
 
+  public void codingIJpaPersistent(java.lang.String dtId, Config config) throws CodePluginException;
+
   public void codingJdbcPersistentImpl(java.lang.String dtId, Config config) throws CodePluginException;
 
   public void codingIService(java.lang.String dtId, Config config) throws CodePluginException;

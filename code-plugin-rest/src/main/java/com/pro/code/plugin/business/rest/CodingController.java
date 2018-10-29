@@ -137,6 +137,29 @@ public class CodingController extends ToolController {
     return responses;
   }
 
+  @RequestMapping(value = { "coding_i_jpa_persistent" }, method = { RequestMethod.POST })
+  @ResponseBody
+  public Responses<Config> codingIJpaPersistent(Parameter parameter, @RequestBody Config config) {
+    if (log.isDebugEnabled()) {
+      log.debug("Staring call CodingController.codingIJpaPersistent ");
+      log.debug("parameter parameter is : " + parameter);
+      log.debug("parameter config is : " + config);
+    }
+    Responses<Config> responses = new Responses<>();
+    try {
+      if (ToolUtil.isNullStr(parameter.getPrimaryKey())) {
+        throw CodePluginException.getException(CodePluginException.FW_PARAMETER_IS_NULL_ERROR, " dtId ");
+      }
+      codingService.codingIJpaPersistent(parameter.getPrimaryKey(), config);
+    } catch (Exception e) {
+      if (log.isErrorEnabled()) {
+        log.error(e.getMessage(), e);
+      }
+      responses.setException(e);
+    }
+    return responses;
+  }
+
   @RequestMapping(value = { "coding_jdbc_persistent_impl" }, method = { RequestMethod.POST })
   @ResponseBody
   public Responses<Config> codingJdbcPersistentImpl(Parameter parameter, @RequestBody Config config) {
@@ -644,6 +667,7 @@ public class CodingController extends ToolController {
       codingService.codingVueEditCss(parameter.getPrimaryKey(), config);
       codingService.codingVueDetail(parameter.getPrimaryKey(), config);
       codingService.codingVueDetailCss(parameter.getPrimaryKey(), config);
+      codingService.codingIJpaPersistent(parameter.getPrimaryKey(), config);
     } catch (Exception e) {
       if (log.isErrorEnabled()) {
         log.error(e.getMessage(), e);
