@@ -22,6 +22,8 @@ ${ci}</div>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 import ${initialCaseEntityName}Query from '@/view/com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}Query'
 
+// @/view/com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}-list/${initialLowercaseEntityName}-list.vue
+
 export default {
 ${ci}name: '${initialCaseEntityName}List',
 ${ci}props: {

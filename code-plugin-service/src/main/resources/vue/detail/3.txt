@@ -7,6 +7,8 @@ ${ci}</div>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 import ${initialCaseEntityName} from '@/view/com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}'
 
+// @/view/com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}-detail/${initialLowercaseEntityName}-detail.vue
+
 export default {
 ${ci}name: '${initialCaseEntityName}Detail',
 ${ci}props: {

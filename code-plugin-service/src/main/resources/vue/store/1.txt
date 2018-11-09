@@ -1,5 +1,9 @@
 import ${initialLowercaseEntityName}Service from '@/api/com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}Service'
 
+// import ${initialLowercaseEntityName}Store from './com/${controllerUrl}${initialLowercaseEntityName}/${initialLowercaseEntityName}Store'
+
+// store.registerModule('${initialLowercaseEntityName}Store', ${initialLowercaseEntityName}Store)
+
 export default {
 ${ci}namespaced: true,
 ${ci}state: {
